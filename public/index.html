@@ -12,15 +12,29 @@
         <h1>Habit Recipes</h1>
         <a id="rainbow" href="http://rainbowbamboo.org">🌈</a>
     </header>
-    <div class="newHabits">
-    <form action="#">
-        <label for="habit-intention">I will</label>
-        <input type="text" name="habit-intention" id="intention-input">
-        <input  type="button" 
-                value="➕"
-                onclick="storeHabit('intentions', 'intention-input')">
-    </form>
-    </div>
+    <details class="newHabits">
+        <summary>Add new habits</summary>
+        <form action="#">
+            <label for="habit-intention">I will</label>
+            <input  class="habit-text-input"
+                    type="text" name="habit-intention" id="intention-input"
+                    placeholder="[Behaviour] at [Time] in [Location]">
+            <input  type="button" 
+                    class="new-habit-button"
+                    value="➕"
+                    onclick="storeHabit('intentions','intention-input')">
+        </form>
+        <form action="#">
+            <label for="habit-intention">After I</label>
+            <input  class="habit-text-input"
+                    type="text" name="habit-stack" id="stack-input"
+                    placeholder="[Old Habit] I will [New Habit]">
+            <input  type="button"
+                    class="new-habit-button" 
+                    value="➕"
+                    onclick="storeHabit('stacks','stack-input')">
+        </form>
+    </details>
     <script src="script.js"></script>
 </body>
 </html>
