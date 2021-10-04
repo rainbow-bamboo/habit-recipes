@@ -14,7 +14,8 @@
     </header>
     <details class="newHabits">
         <summary>Add new habits</summary>
-        <form action="#">
+        <form action=""
+              onsubmit="storeHabit('intentions','intention-input')">
             <label for="habit-intention">I will</label>
             <input  class="habit-text-input"
                     type="text" name="habit-intention" id="intention-input"
@@ -24,7 +25,8 @@
                     value="➕"
                     onclick="storeHabit('intentions','intention-input')">
         </form>
-        <form action="#">
+        <form   action=""
+                onsubmit="storeHabit('stacks', 'stack-input')">
             <label for="habit-intention">After I</label>
             <input  class="habit-text-input"
                     type="text" name="habit-stack" id="stack-input"
@@ -35,6 +37,16 @@
                     onclick="storeHabit('stacks','stack-input')">
         </form>
     </details>
+    <div class="habits">
+        <section class="habit-lists intention-list">
+            <h2>I will</h2>
+            <ul id="intention-list"></ul>
+        </section>
+        <section class="habit-lists stack-list">
+            <h2>After I</h2>
+            <ul id="stack-list"></ul>
+        </section>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

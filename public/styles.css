@@ -133,3 +133,18 @@ h1{
     font-size: 1.55rem;
     cursor: pointer;
 }
+
+.habits{
+    background-color: wheat;
+    padding: 1em;
+}
+
+.habit-lists{
+    margin-bottom: 1em;
+    display: flex;
+}
+
+.habit-lists h2{
+    font-size: 2rem;
+    width: 4em;
+}
