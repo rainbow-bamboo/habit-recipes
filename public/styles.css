@@ -89,9 +89,10 @@ table {
 }
 
 body{
-    background-color: #F9F8F3;
+    background-color: #F7E293;
     width: 70vw;
     margin: auto;
+    font-family: 'Vollkorn';
 }
 
 header{
@@ -100,18 +101,21 @@ header{
 
 h1{
     font-size: 4rem;
+    font-family: 'Vollkorn';
+    font-weight: 800;
+    font-style: italic;
 }
 
 .newHabits summary{
     font-size: 2rem;
     margin-bottom: .5em;
+    cursor: pointer;
 }
 
 .newHabits form{
     display: flex;
     align-items: center;
     margin-bottom: 1em;
-    background-color: whitesmoke;
     padding: .5em;
 }
 
@@ -135,16 +139,38 @@ h1{
 }
 
 .habits{
-    background-color: wheat;
     padding: 1em;
 }
 
 .habit-lists{
-    margin-bottom: 1em;
+    padding: 1em;
+    margin-bottom: 2em;
     display: flex;
+    border: 3px solid black;
 }
 
 .habit-lists h2{
+    padding: .25em;
     font-size: 2rem;
     width: 4em;
+    font-weight: 600;
+}
+
+.habit-lists ul{
+    width: 100%;
+}
+
+.habit-lists li{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    display: block;
+    padding: .25em;
+}
+
+.habit-lists li:nth-child(odd){
+    background-color: #FDB078;
+}
+
+.habit-lists li:nth-child(even){
+    background-color: #F36879;
 }
