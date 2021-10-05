@@ -26,3 +26,8 @@ It'll look like
 
 And then when we deserialize, the Arrays will return arrays of objects. 
 These objects are then rendered as habits.
+
+## Future Work
+- Ability to delete stored habits
+- Seperate habits into explicit parts
+- Add a counter to eacch habit

@@ -129,13 +129,16 @@ h1{
     width: 40rem;
     font-size: 2rem;
     margin-right: 1em;
-    background-color: whitesmoke;
-    color: tomato;
+    padding: .5em;
+    background-color: #F0F0F0;
+    color: #F36879;
 }
 
 .new-habit-button{
     font-size: 1.55rem;
     cursor: pointer;
+    border:2px solid #2A9C9D;
+    margin-right: .25em;
 }
 
 .habits{
@@ -174,3 +177,30 @@ h1{
 .habit-lists li:nth-child(even){
     background-color: #F36879;
 }
+
+@media only screen and (max-width: 600px) {
+    body{
+        width: 100vw;
+    }
+
+    .newHabits label{
+        font-size: 1.25rem;
+    }
+
+    .newHabits{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .habit-text-input {
+        padding: 0em;
+        width: 90vw;
+        font-size: 1.25rem;
+        margin-right: 1em;
+    }
+
+    .new-habit-button{
+        font-size: 1rem;
+    }
+    
+  }
