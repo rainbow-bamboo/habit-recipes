@@ -193,12 +193,25 @@ h1{
 .counter{
     margin-right: 1em;
     font-family: sans-serif;
+    background-color: #F0F0F0;
+    padding: .25em;
+    border-radius: .2em;
 }
 
-.habit-lists select{
-    font-size: 1.25rem;
-    padding: .25em;
+.habit-ui{
+    display: flex;
+}
+
+.habit-ui details > summary {
+    list-style: none;
     cursor: pointer;
+}
+.habit-ui details > summary::-webkit-details-marker {
+    display: none;
+}
+
+.habit-ui button{
+    margin-right: 1em;
 }
 
 

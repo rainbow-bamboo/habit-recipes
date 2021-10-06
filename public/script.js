@@ -64,7 +64,7 @@ function editHabitBody(type, habitID) {
 }
 
 function resetHabitCounter(type, habitID) {
-    if(window.confirm("Reset counter")){
+    if(window.confirm("Reset the counter to 0?")){
         const stored = parseFromLocalstorage(type)
         const editedHabits = stored.map(h => {
             if(h.id == habitID){
@@ -78,7 +78,7 @@ function resetHabitCounter(type, habitID) {
 }
 
 function deleteHabit(type, habitID) {
-    if(window.confirm("Delete Habit")){
+    if(window.confirm("Delete habit?")){
         const stored = parseFromLocalstorage(type)
         const editedHabits = stored.filter(function(el){
             return el.id != habitID
@@ -89,18 +89,18 @@ function deleteHabit(type, habitID) {
 }
 
 function renderControls(type, id) {
-    const newSelect = document.createElement("select")
+    const newSelect = document.createElement("details")
     newSelect.name = "controls"
     newSelect.id = "controls"
 
-    const defaultControl = document.createElement("option")
+    const defaultControl = document.createElement("summary")
     const defaultText = document.createTextNode("⚙️")
     defaultControl.appendChild(defaultText)
     defaultControl.value = ""
     newSelect.appendChild(defaultControl)
     
-    const editControl = document.createElement("option")
-    const editText = document.createTextNode("edit habit")
+    const editControl = document.createElement("button")
+    const editText = document.createTextNode("edit")
     editControl.appendChild(editText)
     editControl.onclick = function () {
         editHabitBody(type, id)
@@ -108,7 +108,7 @@ function renderControls(type, id) {
     }
     newSelect.appendChild(editControl)
 
-    const resetCounterControl = document.createElement("option")
+    const resetCounterControl = document.createElement("button")
     const counterText = document.createTextNode("reset counter")
     resetCounterControl.appendChild(counterText)
     resetCounterControl.onclick = function () {
@@ -117,8 +117,8 @@ function renderControls(type, id) {
     }
     newSelect.appendChild(resetCounterControl)
 
-    const deleteControl = document.createElement("option")
-    const deleteText = document.createTextNode("delete habit")
+    const deleteControl = document.createElement("button")
+    const deleteText = document.createTextNode("delete")
     deleteControl.appendChild(deleteText)
     deleteControl.onclick = function () {
         deleteHabit(type, id)
@@ -151,6 +151,7 @@ function habitsToElements(type, habits, id){
             const newControls = renderControls(type, element.id)
                         
             const newUIDIV = document.createElement("div")
+            newUIDIV.className = "habit-ui"
             newUIDIV.appendChild(newCounter)
             newUIDIV.appendChild(newControls)
             
