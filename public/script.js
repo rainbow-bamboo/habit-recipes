@@ -5,7 +5,8 @@ function storeHabit(type, inputID) {
     if(storedHabits != null){
         const newID = maxID(habits) + 1
         habits.push({"body": habitBody,
-                     "id": newID})
+                     "id": newID,
+                     "count": 0})
         let stringHabits = JSON.stringify(habits)
         console.log(stringHabits)
         window.localStorage.setItem(type, stringHabits)
@@ -13,7 +14,8 @@ function storeHabit(type, inputID) {
         init()
     }else{
         window.localStorage.setItem(type, JSON.stringify([{"body": habitBody,
-                                                            "id": 1}]))
+                                                            "id": 1,
+                                                            "count": 0}]))
         document.getElementById(inputID).value = ""
         init()
     }
@@ -30,14 +32,36 @@ function parseFromLocalstorage(key){
     return stored
 }
 
-function habitsToElements(habits, id){
+function incrementCounter(type, habitID) {
+    const stored = parseFromLocalstorage(type)
+    const editedHabits = stored.map(h => {
+        if(h.id == habitID){
+            h.count = h.count + 1
+        }
+        return h
+    })
+    window.localStorage.setItem(type, JSON.stringify(editedHabits))
+    init()
+}
+
+function habitsToElements(type, habits, id){
     if(habits){
         let targetElement = document.getElementById(id)
         targetElement.innerHTML = ""
         habits.forEach(element => {
             const newLI = document.createElement("li")
+            const newBtn = document.createElement("button")
             const newContent = document.createTextNode(element.body)
-            newLI.appendChild(newContent)
+            newBtn.appendChild(newContent)
+            newLI.appendChild(newBtn)
+            newBtn.onclick = function (){
+                incrementCounter(type, element.id)
+            }
+
+            const newCounter = document.createElement("span")
+            const newCount = document.createTextNode(element.count)
+            newCounter.appendChild(newCount)
+            newLI.appendChild(newCounter)
             targetElement.appendChild(newLI)
         })
     }
@@ -46,8 +70,8 @@ function habitsToElements(habits, id){
 function init(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')
-    habitsToElements(storedIntentions, 'intention-list')
-    habitsToElements(storedStacks, 'stack-list')
+    habitsToElements('intentions', storedIntentions, 'intention-list')
+    habitsToElements('stacks', storedStacks, 'stack-list')
 }
 
 init()
