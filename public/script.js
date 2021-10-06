@@ -44,6 +44,40 @@ function incrementCounter(type, habitID) {
     init()
 }
 
+function editHabitBody(type, id) {
+    console.log("editing habit body")
+}
+
+function resetHabitCounter(type, id) {
+    console.log("resetting counter")
+}
+
+function deleteHabit(type, id) {
+    console.log("deleting habit")
+}
+
+function renderControls(type, id) {
+    const newSelect = document.createElement("select")
+    newSelect.name = "controls"
+    newSelect.id = "controls"
+
+    const defaultControl = document.createElement("option")
+    const defaultText = document.createTextNode("*")
+    defaultControl.appendChild(defaultText)
+    defaultControl.value = ""
+    newSelect.appendChild(defaultControl)
+    
+    const editControl = document.createElement("option")
+    const editText = document.createTextNode("edit habit")
+    editControl.appendChild(editText)
+    editControl.onclick = function () {
+        editHabitBody(type, id)
+        newSelect.value = ""
+    }
+    newSelect.appendChild(editControl)
+    return newSelect
+}
+
 function habitsToElements(type, habits, id){
     if(habits){
         let targetElement = document.getElementById(id)
@@ -62,6 +96,10 @@ function habitsToElements(type, habits, id){
             const newCount = document.createTextNode(element.count)
             newCounter.appendChild(newCount)
             newLI.appendChild(newCounter)
+            
+            const newControls = renderControls(type, id)
+            newLI.appendChild(newControls)
+
             targetElement.appendChild(newLI)
         })
     }
