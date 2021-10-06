@@ -38,6 +38,4 @@ Our rendering function, `habitsToElements` makes me appreaciate JSX. We have to 
 
 
 ## Future Work
-- Ability to delete stored habits
 - Seperate habits into explicit parts
-- Add a counter to eacch habit
