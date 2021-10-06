@@ -62,7 +62,7 @@ function renderControls(type, id) {
     newSelect.id = "controls"
 
     const defaultControl = document.createElement("option")
-    const defaultText = document.createTextNode("*")
+    const defaultText = document.createTextNode("⚙️")
     defaultControl.appendChild(defaultText)
     defaultControl.value = ""
     newSelect.appendChild(defaultControl)
@@ -75,6 +75,25 @@ function renderControls(type, id) {
         newSelect.value = ""
     }
     newSelect.appendChild(editControl)
+
+    const resetCounterControl = document.createElement("option")
+    const counterText = document.createTextNode("reset counter")
+    resetCounterControl.appendChild(counterText)
+    resetCounterControl.onclick = function () {
+        resetHabitCounter(type, id)
+        newSelect.value = ""
+    }
+    newSelect.appendChild(resetCounterControl)
+
+    const deleteControl = document.createElement("option")
+    const deleteText = document.createTextNode("delete habit")
+    deleteControl.appendChild(deleteText)
+    deleteControl.onclick = function () {
+        deleteHabit(type, id)
+        newSelect.value = ""
+    }
+    newSelect.appendChild(deleteControl)
+
     return newSelect
 }
 
@@ -93,13 +112,17 @@ function habitsToElements(type, habits, id){
             }
 
             const newCounter = document.createElement("span")
+            newCounter.className = "counter"
             const newCount = document.createTextNode(element.count)
             newCounter.appendChild(newCount)
-            newLI.appendChild(newCounter)
             
             const newControls = renderControls(type, id)
-            newLI.appendChild(newControls)
-
+                        
+            const newUIDIV = document.createElement("div")
+            newUIDIV.appendChild(newCounter)
+            newUIDIV.appendChild(newControls)
+            
+            newLI.appendChild(newUIDIV)
             targetElement.appendChild(newLI)
         })
     }
