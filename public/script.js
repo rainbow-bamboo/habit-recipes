@@ -32,6 +32,10 @@ function parseFromLocalstorage(key){
     return stored
 }
 
+function storeToLocalstorage(key,val){
+    window.localStorage.setItem(key, JSON.stringify(val))
+}
+
 function incrementCounter(type, habitID) {
     const stored = parseFromLocalstorage(type)
     const editedHabits = stored.map(h => {
@@ -40,20 +44,48 @@ function incrementCounter(type, habitID) {
         }
         return h
     })
-    window.localStorage.setItem(type, JSON.stringify(editedHabits))
+    storeToLocalstorage(type, editedHabits)
     init()
 }
 
-function editHabitBody(type, id) {
-    console.log("editing habit body")
+function editHabitBody(type, habitID) {
+    let newBody = window.prompt("What should the new habit be?")
+    if(newBody){
+        const stored = parseFromLocalstorage(type)
+        const editedHabits = stored.map(h => {
+            if(h.id == habitID){
+                h.body = newBody
+            }
+            return h
+        })
+        storeToLocalstorage(type, editedHabits)
+        init()
+    }
 }
 
-function resetHabitCounter(type, id) {
-    console.log("resetting counter")
+function resetHabitCounter(type, habitID) {
+    if(window.confirm("Reset counter")){
+        const stored = parseFromLocalstorage(type)
+        const editedHabits = stored.map(h => {
+            if(h.id == habitID){
+                h.count = 0
+            }
+            return h
+        })
+        storeToLocalstorage(type, editedHabits)
+        init()
+    }
 }
 
-function deleteHabit(type, id) {
-    console.log("deleting habit")
+function deleteHabit(type, habitID) {
+    if(window.confirm("Delete Habit")){
+        const stored = parseFromLocalstorage(type)
+        const editedHabits = stored.filter(function(el){
+            return el.id != habitID
+        })
+        storeToLocalstorage(type, editedHabits)
+        init()
+    }
 }
 
 function renderControls(type, id) {
@@ -116,7 +148,7 @@ function habitsToElements(type, habits, id){
             const newCount = document.createTextNode(element.count)
             newCounter.appendChild(newCount)
             
-            const newControls = renderControls(type, id)
+            const newControls = renderControls(type, element.id)
                         
             const newUIDIV = document.createElement("div")
             newUIDIV.appendChild(newCounter)

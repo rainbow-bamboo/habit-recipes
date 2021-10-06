@@ -195,6 +195,7 @@ h1{
 }
 
 .habit-lists select{
+    font-size: 1.25rem;
     padding: .25em;
 }
 
@@ -222,6 +223,10 @@ h1{
 
     .new-habit-button{
         font-size: 1rem;
+    }
+
+    .habit-lists li{
+        flex-direction: column;
     }
     
   }
