@@ -36,11 +36,37 @@ function storeToLocalstorage(key,val){
     window.localStorage.setItem(key, JSON.stringify(val))
 }
 
+function isEditedToday(lastEdited){
+    if(lastEdited){
+        const lastEditedDate = new Date(lastEdited)
+        const lastEditedYear = lastEditedDate.getFullYear()
+        const lastEditedMonth = lastEditedDate.getMonth()
+        const lastEditedDay = lastEditedDate.getDate()
+
+        const today = new Date()
+        const todaysYear = today.getFullYear()
+        const todaysMonth = today.getMonth()
+        const todaysDay = today.getDate()
+
+        if((lastEditedDay === todaysDay) &&
+            (lastEditedMonth === todaysMonth) &&
+            (lastEditedDay === todaysDay) &&
+            (lastEditedYear === todaysYear)){
+                return true
+            }else{
+                return false
+            }
+    }else{
+        return false
+    }
+}
+
 function incrementCounter(type, habitID) {
     const stored = parseFromLocalstorage(type)
     const editedHabits = stored.map(h => {
         if(h.id == habitID){
             h.count = h.count + 1
+            h.lastEdited = Date()
         }
         return h
     })
@@ -137,6 +163,7 @@ function habitsToElements(type, habits, id){
             const newLI = document.createElement("li")
             const newBtn = document.createElement("button")
             const newContent = document.createTextNode(element.body)
+            const editedToday = isEditedToday(element.lastEdited)
             newBtn.appendChild(newContent)
             newLI.appendChild(newBtn)
             newBtn.onclick = function (){
@@ -144,8 +171,15 @@ function habitsToElements(type, habits, id){
             }
 
             const newCounter = document.createElement("span")
-            newCounter.className = "counter"
-            const newCount = document.createTextNode(element.count)
+            let countText = element.count.toString()
+            if(editedToday){
+                newCounter.className = "counter edited-today"
+                countText = countText.concat(" ⭐")
+            }else{
+                newCounter.className = "counter"
+            }
+            
+            const newCount = document.createTextNode(countText)
             newCounter.appendChild(newCount)
             
             const newControls = renderControls(type, element.id)

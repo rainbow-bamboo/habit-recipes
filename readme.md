@@ -9,7 +9,7 @@ This website uses some of the Atomic Habits techniques such as habit stacking to
 It does 3 main things
 - Habit stack "When I _"
 - Habit stack "At _"
-- Highlights a random habit
+- Keeps track of how many times you perform the habit
 
 1. Select type of Habit
 2. Enter habit
