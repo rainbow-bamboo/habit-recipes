@@ -241,6 +241,10 @@ h1{
         font-size: 1rem;
     }
 
+    .habit-lists{
+        flex-direction: column;
+    }
+
     .habit-lists li{
         flex-direction: column;
     }
