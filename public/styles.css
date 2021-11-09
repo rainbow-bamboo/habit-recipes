@@ -147,7 +147,7 @@ h1{
     font-variant-ligatures: discretionary-ligatures;
 }
 
-.bars{
+.bars, #daily-percentage{
     font-family: "FFChartwellBarsRegular";
     font-variant-ligatures: discretionary-ligatures;
 }

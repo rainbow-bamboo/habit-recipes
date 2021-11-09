@@ -155,7 +155,33 @@ function renderControls(type, id) {
     return newSelect
 }
 
-function habitsToElements(type, habits, id){
+function percentageDoneToday(habits){
+    const numHabits = habits.length;
+    const habitsDoneToday = habits.map(e => isEditedToday(e.lastEdited));
+    const countHabitsDoneToday = habitsDoneToday.filter(Boolean).length;
+    const percentageDone = Math.round(100 * (countHabitsDoneToday / numHabits));
+    console.log(numHabits);
+    console.log(habitsDoneToday);
+    console.log(percentageDone);
+    return percentageDone;
+}
+
+function habitStats(id, habits){
+    if(habits){
+        const targetElement = document.getElementById(id);
+        const percentageDone = percentageDoneToday(habits);
+        const percentageChart = [percentageDone , (100 - percentageDone)].join("+");
+        const newSpan = document.createElement("span");
+        const chart = document.createTextNode(percentageChart);
+        newSpan.appendChild(chart);
+        newSpan.id = "daily-percentage";
+
+        targetElement.replaceWith(newSpan);
+
+    }
+}
+
+function habitList(type, habits, id){
     if(habits){
         let targetElement = document.getElementById(id)
         targetElement.innerHTML = ""
@@ -198,8 +224,9 @@ function habitsToElements(type, habits, id){
 function init(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')
-    habitsToElements('intentions', storedIntentions, 'intention-list')
-    habitsToElements('stacks', storedStacks, 'stack-list')
+    habitStats('daily-percentage' , storedIntentions.concat(storedStacks))
+    habitList('intentions', storedIntentions, 'intention-list')
+    habitList('stacks', storedStacks, 'stack-list')
 }
 
 init()
