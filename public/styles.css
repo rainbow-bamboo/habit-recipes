@@ -72,7 +72,7 @@ table {
 
 
 /* @import must be at top of file, otherwise CSS will not work */
-@import url("//hello.myfonts.net/count/403381");
+/* @import url("//hello.myfonts.net/count/403381");
   
 @font-face {
   font-family: "FFChartwellBarsRegular";
@@ -81,7 +81,8 @@ table {
 @font-face {
     font-family: "FFChartwellAreas";
   src: url('webFonts/FFChartwellAreas/font.woff2') format('woff2'), url('webFonts/FFChartwellAreas/font.woff') format('woff');
-}
+} */
+
 
 /* Rainbow Styles */
 #rainbow {
@@ -144,12 +145,13 @@ h1{
 
 .areas{
     font-family: "FFChartwellAreas";
-    font-variant-ligatures: discretionary-ligatures;
+    /* font-variant-ligatures: discretionary-ligatures; */
 }
 
-.bars, #daily-percentage{
-    font-family: "FFChartwellBarsRegular";
-    font-variant-ligatures: discretionary-ligatures;
+#star-chart{
+    text-align: center;
+    font-size: 2rem;
+    display: block;
 }
 
 .newHabits summary{
