@@ -149,7 +149,7 @@ h1{
 }
 
 #star-chart{
-    text-align: center;
+    margin-top: 1em;
     font-size: 2rem;
     display: block;
 }
@@ -215,7 +215,6 @@ h1{
 .habit-lists li{
     font-size: 1.5rem;
     line-height: 2rem;
-    display: block;
     padding: .25em;
     display: flex;
     justify-content: space-between;
@@ -244,6 +243,7 @@ h1{
     background-color: #F0F0F0;
     padding: .25em;
     border-radius: .2em;
+    height: 1.25em;
 }
 
 .habit-ui{
@@ -269,6 +269,10 @@ h1{
         width: 100vw;
     }
 
+    h1{
+        font-size: 2.4rem;
+    }
+
     .newHabits label{
         font-size: 1.25rem;
     }
@@ -276,6 +280,10 @@ h1{
     .newHabits{
         display: flex;
         flex-direction: column;
+    }
+
+    .newHabits summary{
+        font-size: 1.5rem;
     }
 
     .habit-text-input {
@@ -289,12 +297,31 @@ h1{
         font-size: 1rem;
     }
 
+    #star-chart{
+        margin-bottom: .5em;
+    }
+
+    .habits{
+        padding: 0px;
+    }
+
+
     .habit-lists{
         flex-direction: column;
     }
 
     .habit-lists li{
-        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .habit-lists button{
+        width: 100%;
+        margin-right: .5em;
+    }
+    
+    .counter{
+        width: 3em;
+        text-align: right;
     }
     
   }
