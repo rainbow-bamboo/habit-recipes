@@ -317,13 +317,23 @@ h1{
         flex-direction: column;
     }
 
+    .habit-lists h2{
+        padding-left: 0px;
+    }
+
     .habit-lists li{
         justify-content: space-between;
     }
 
     .habit-lists button{
         width: 100%;
+        height: 2em;
         margin-right: .5em;
+    }
+
+    .habit-lists span{
+        max-width: 50vw;
+        text-align: center;
     }
     
     .counter{
