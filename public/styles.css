@@ -220,20 +220,13 @@ h1{
     justify-content: space-between;
 }
 
-.habit-lists button{
-    background-color: #F0F0F0;
-    box-shadow: 4px 4px #aaa;
+.habit-lists span{
+    display: inline-block;
     font-size: 1.25rem;
     border-radius: .25em;
-    border: none;
-    padding:.25em;
+    background-color: #F0F0F0;
+    padding:.4em .5em .25em .5em;
     font-family: 'Vollkorn';
-    cursor: pointer;
-    transition: all .1s;
-}
-
-.habit-lists button:active{
-    box-shadow: 1px 1px #aaa;
 }
 
 .habit-lists li:nth-child(odd){
@@ -245,12 +238,19 @@ h1{
 }
 
 .counter{
+    font-size: .75em;
     margin-right: 1em;
+    background-color: #F0F0F0;
     font-family: sans-serif;
-    border: 3px solid #F0F0F0;
+    box-shadow: 4px 4px #aaa;
     padding: .25em;
-    border-radius: .2em;
-    height: 1.25em;
+    border-radius: .25em;
+    cursor: pointer;
+    transition: all .1s;
+}
+
+.counter:active{
+    box-shadow: 1px 1px #aaa;
 }
 
 .habit-ui{

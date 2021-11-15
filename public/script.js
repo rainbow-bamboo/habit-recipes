@@ -65,7 +65,7 @@ function incrementCounter(type, habitID) {
     const stored = parseFromLocalstorage(type)
     const editedHabits = stored.map(h => {
         if(h.id == habitID){
-            h.count = h.count + 1
+            h.count = parseInt(h.count) + 1
             h.lastEdited = Date()
         }
         return h
@@ -198,16 +198,13 @@ function habitList(type, habits, id){
         targetElement.innerHTML = ""
         habits.forEach(element => {
             const newLI = document.createElement("li")
-            const newBtn = document.createElement("button")
+            const newHabit = document.createElement("span")
             const newContent = document.createTextNode(element.body)
             const editedToday = isEditedToday(element.lastEdited)
-            newBtn.appendChild(newContent)
-            newLI.appendChild(newBtn)
-            newBtn.onclick = function (){
-                incrementCounter(type, element.id)
-            }
+            newHabit.appendChild(newContent)
+            newLI.appendChild(newHabit)
 
-            const newCounter = document.createElement("span")
+            const newCounter = document.createElement("button")
             let countText = element.count.toString()
             if(editedToday){
                 newCounter.className = "counter edited-today"
@@ -218,6 +215,9 @@ function habitList(type, habits, id){
             
             const newCount = document.createTextNode(countText)
             newCounter.appendChild(newCount)
+            newCounter.onclick = function (){
+                incrementCounter(type, element.id)
+            }
             
             const newControls = renderControls(type, element.id)
                         
