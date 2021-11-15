@@ -222,11 +222,18 @@ h1{
 
 .habit-lists button{
     background-color: #F0F0F0;
+    box-shadow: 4px 4px #aaa;
     font-size: 1.25rem;
     border-radius: .25em;
+    border: none;
     padding:.25em;
     font-family: 'Vollkorn';
     cursor: pointer;
+    transition: all .1s;
+}
+
+.habit-lists button:active{
+    box-shadow: 1px 1px #aaa;
 }
 
 .habit-lists li:nth-child(odd){
@@ -240,7 +247,7 @@ h1{
 .counter{
     margin-right: 1em;
     font-family: sans-serif;
-    background-color: #F0F0F0;
+    border: 3px solid #F0F0F0;
     padding: .25em;
     border-radius: .2em;
     height: 1.25em;

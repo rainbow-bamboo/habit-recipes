@@ -90,17 +90,16 @@ function editHabitBody(type, habitID) {
 }
 
 function resetHabitCounter(type, habitID) {
-    if(window.confirm("Reset the counter to 0?")){
-        const stored = parseFromLocalstorage(type)
-        const editedHabits = stored.map(h => {
-            if(h.id == habitID){
-                h.count = 0
-            }
-            return h
-        })
-        storeToLocalstorage(type, editedHabits)
-        init()
-    }
+    const stored = parseFromLocalstorage(type)
+    const editedHabits = stored.map(h => {
+        if(h.id == habitID){
+            const newVal = prompt("What would you like the counter to be?")
+            h.count = newVal
+        }
+        return h
+    })
+    storeToLocalstorage(type, editedHabits)
+    init()
 }
 
 function deleteHabit(type, habitID) {
@@ -126,7 +125,7 @@ function renderControls(type, id) {
     newSelect.appendChild(defaultControl)
     
     const editControl = document.createElement("button")
-    const editText = document.createTextNode("edit")
+    const editText = document.createTextNode("edit habit")
     editControl.appendChild(editText)
     editControl.onclick = function () {
         editHabitBody(type, id)
@@ -135,7 +134,7 @@ function renderControls(type, id) {
     newSelect.appendChild(editControl)
 
     const resetCounterControl = document.createElement("button")
-    const counterText = document.createTextNode("reset counter")
+    const counterText = document.createTextNode("edit counter")
     resetCounterControl.appendChild(counterText)
     resetCounterControl.onclick = function () {
         resetHabitCounter(type, id)
