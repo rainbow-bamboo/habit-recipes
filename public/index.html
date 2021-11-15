@@ -24,10 +24,10 @@
             <input  class="habit-text-input"
                     type="text" name="habit-intention" id="intention-input"
                     placeholder="[Behaviour] at [Time] in [Location]">
-            <input  type="button" 
-                    class="new-habit-button"
-                    value="➕"
+            <button class="new-habit-button"
                     onclick="storeHabit('intentions','intention-input')">
+                    Add
+            </button>
         </form>
         <form   action=""
                 onsubmit="storeHabit('stacks', 'stack-input')">
@@ -35,10 +35,10 @@
             <input  class="habit-text-input"
                     type="text" name="habit-stack" id="stack-input"
                     placeholder="[Old Habit] I will [New Habit]">
-            <input  type="button"
-                    class="new-habit-button" 
-                    value="➕"
+            <button class="new-habit-button" 
                     onclick="storeHabit('stacks','stack-input')">
+                    Add
+            </button>
         </form>
         <p>Habits are stored in your browser so you can close the window and re-open later.</p>
     </details>

@@ -179,7 +179,7 @@ h1{
     font-size: 1.25rem;
     margin-right: 1em;
     background-color: #F0F0F0;
-    color: #F36879;
+    color: #333;
     word-break: break-word;
 }
 
@@ -188,6 +188,7 @@ h1{
     cursor: pointer;
     border:2px solid #2A9C9D;
     margin-right: .25em;
+    padding: .5em;
 }
 
 .habits{
