@@ -243,7 +243,8 @@ h1{
     background-color: #F0F0F0;
     font-family: sans-serif;
     box-shadow: 4px 4px #aaa;
-    padding: .25em;
+    padding: .5em;
+    border: none;
     border-radius: .25em;
     cursor: pointer;
     transition: all .1s;
