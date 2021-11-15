@@ -169,12 +169,13 @@ h1{
 
 .newHabits label{
     display: inline-block;
-    width: 6rem;
-    font-size: 1.25rem;
+    min-width: 4em;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .habit-text-input{
-    padding: 0em;
+    padding: .5em;
     width: 90vw;
     font-size: 1.25rem;
     margin-right: 1em;
@@ -186,9 +187,16 @@ h1{
 .new-habit-button{
     font-size: 1rem;
     cursor: pointer;
-    border:2px solid #2A9C9D;
+    border: none;
     margin-right: .25em;
     padding: .5em;
+    background-color: #F0F0F0;
+    border-radius: .25em;
+    box-shadow: 4px 4px #aaa;
+}
+
+.new-habit-button:active{
+    box-shadow: 1px 1px #aaa;
 }
 
 .habits{
@@ -284,6 +292,7 @@ h1{
 
     .newHabits label{
         font-size: 1.25rem;
+        min-width: 3.5em;
     }
 
     .newHabits{
