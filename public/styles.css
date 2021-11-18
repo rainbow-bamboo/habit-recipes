@@ -165,6 +165,7 @@ h1{
     align-items: center;
     margin-bottom: 1em;
     padding: .5em;
+    width: 40vw;
 }
 
 .newHabits label{
@@ -307,9 +308,11 @@ h1{
         font-size: 1.5rem;
     }
 
+
+
     .habit-text-input {
         padding: 0em;
-        width: 90vw;
+        width: 50vw;
         font-size: 1.25rem;
         margin-right: 1em;
     }
