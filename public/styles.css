@@ -335,7 +335,7 @@ h1{
     }
 
     .habit-lists h2{
-        padding-left: 0px;
+        padding-left: .25em;
     }
 
     .habit-lists li{
@@ -346,11 +346,15 @@ h1{
         width: 4em;
         height: 2em;
         margin-right: .5em;
+        padding: .25em;
+    }
+
+    #controls button{
+        width: 100%;
     }
 
     .habit-lists span{
         max-width: 50vw;
-        text-align: center;
     }
     
     .counter{
