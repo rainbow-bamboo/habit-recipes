@@ -143,11 +143,6 @@ h1{
     font-style: italic;
 }
 
-.areas{
-    font-family: "FFChartwellAreas";
-    /* font-variant-ligatures: discretionary-ligatures; */
-}
-
 #star-chart{
     margin-top: 1em;
     font-size: 2rem;
@@ -162,24 +157,37 @@ h1{
 
 .newHabits form{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 1em;
-    padding: .5em;
-    width: 40vw;
+    margin-bottom: 2em;
+    padding: 1em;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: #ffe4d1;
 }
+
 
 .newHabits label{
     display: inline-block;
     min-width: 4em;
     font-size: 1.5rem;
-    font-weight: 600;
+    margin-bottom: .5em;
+}
+
+.habit-highlight{
+    color: rgb(255, 66, 59);
+    font-weight: bold;
+}
+
+.newHabits input{
+    width: 40vw;
+    margin-bottom: .5em;
 }
 
 .habit-text-input{
     padding: .5em;
     width: 90vw;
     font-size: 1.25rem;
-    margin-right: 1em;
     background-color: #F0F0F0;
     color: #333;
     word-break: break-word;
@@ -302,19 +310,17 @@ h1{
     .newHabits{
         display: flex;
         flex-direction: column;
+        text-align: center;
     }
 
     .newHabits summary{
         font-size: 1.5rem;
     }
 
-
-
-    .habit-text-input {
+    .newHabits input{
         padding: 0em;
-        width: 50vw;
+        width: 100%;
         font-size: 1.25rem;
-        margin-right: 1em;
     }
 
     .new-habit-button{

@@ -20,20 +20,20 @@
         <summary>Add new habits</summary>
         <form action=""
               onsubmit="storeHabit('intentions','intention-input')">
-            <label for="habit-intention">I will</label>
+            <label for="habit-intention">I will <span class="habit-highlight">behaviour</span> at <span class="habit-highlight">time</span> in <span class="habit-highlight">location</span></label>
             <input  class="habit-text-input"
                     type="text" name="habit-intention" id="intention-input"
-                    placeholder="[Behaviour] at [Time] in [Location]">
+                    placeholder="walk on Mondays and Wednesdays in the park">
             <button class="new-habit-button">
                     Add
             </button>
         </form>
         <form   action=""
                 onsubmit="storeHabit('stacks', 'stack-input')">
-            <label for="habit-intention">After I</label>
+            <label for="habit-intention">After I <span class="habit-highlight">old habit</span> I will <span class="habit-highlight">new habit</span></label>
             <input  class="habit-text-input"
                     type="text" name="habit-stack" id="stack-input"
-                    placeholder="[Old Habit] I will [New Habit]">
+                    placeholder="make tea I will write a poem">
             <button class="new-habit-button">
                     Add
             </button>
