@@ -170,26 +170,27 @@ function percentageDoneToday(habits){
     return percentageDone;
 }
 
-function habitStats(id, habits){
-    if(habits){
-        const targetElement = document.getElementById(id);
-        const habitsDone = habitsDoneToday(habits);
+function habitStats(id, intentions, stacks){
+    let habits = []
+    // if(habits){
+    //     const targetElement = document.getElementById(id);
+    //     const habitsDone = habitsDoneToday(habits);
 
-        const habitStarArray = [];
-        for (let index = 0; index < habitsDone; index++) {
-            habitStarArray.push("⭐")
-        }
+    //     const habitStarArray = [];
+    //     for (let index = 0; index < habitsDone; index++) {
+    //         habitStarArray.push("⭐")
+    //     }
 
-        const stars = habitStarArray.join("");
+    //     const stars = habitStarArray.join("");
 
-        const newSpan = document.createElement("span");
-        const chart = document.createTextNode(stars);
-        newSpan.appendChild(chart);
-        newSpan.id = "star-chart";
+    //     const newSpan = document.createElement("span");
+    //     const chart = document.createTextNode(stars);
+    //     newSpan.appendChild(chart);
+    //     newSpan.id = "star-chart";
 
-        targetElement.replaceWith(newSpan);
+    //     targetElement.replaceWith(newSpan);
 
-    }
+    // }
 }
 
 function habitList(type, habits, id){
@@ -212,7 +213,7 @@ function habitList(type, habits, id){
             }else{
                 newCounter.className = "counter"
             }
-            
+
             const newCount = document.createTextNode(countText)
             newCounter.appendChild(newCount)
             newCounter.onclick = function (){
@@ -235,9 +236,17 @@ function habitList(type, habits, id){
 function init(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')
-    habitStats('star-chart' , storedIntentions.concat(storedStacks))
-    habitList('intentions', storedIntentions, 'intention-list')
-    habitList('stacks', storedStacks, 'stack-list')
+    habitStats('star-chart' , storedIntentions , storedStacks)
+    
+    if(storedIntentions){
+        console.log(storedIntentions)
+        habitList('intentions', storedIntentions, 'intention-list')
+    }
+    if(storedStacks){
+        console.log(storedStacks)
+        habitList('stacks', storedStacks, 'stack-list')
+    }
+
 }
 
 init()
