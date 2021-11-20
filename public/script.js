@@ -232,6 +232,12 @@ function habitList(type, habits, id){
     }
 }
 
+function removeElement(id){
+    const element = document.getElementById(id)
+    element.remove()
+    return true
+}
+
 function init(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')
@@ -239,9 +245,15 @@ function init(){
     
     if(storedIntentions.length > 0){
         habitList('intentions', storedIntentions, 'intention-list')
+    }else{
+        removeElement("intention-section")
     }
+
+
     if(storedStacks.length > 0){
         habitList('stacks', storedStacks, 'stack-list')
+    }else{
+        removeElement("stack-section")
     }
 
 }
