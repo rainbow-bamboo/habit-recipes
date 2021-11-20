@@ -8,7 +8,6 @@ function storeHabit(type, inputID) {
                      "id": newID,
                      "count": 0})
         let stringHabits = JSON.stringify(habits)
-        console.log(stringHabits)
         window.localStorage.setItem(type, stringHabits)
         document.getElementById(inputID).value = ""
         init()
@@ -29,7 +28,11 @@ function maxID(habits) {
 
 function parseFromLocalstorage(key){
     const stored = JSON.parse(window.localStorage.getItem(key))
-    return stored
+    if(stored){
+        return stored
+    }else{
+        return []
+    }
 }
 
 function storeToLocalstorage(key,val){
@@ -164,33 +167,29 @@ function percentageDoneToday(habits){
     const numHabits = habits.length;
     const countHabitsDoneToday = habitsDoneToday(habits);
     const percentageDone = Math.round(100 * (countHabitsDoneToday / numHabits));
-    console.log(numHabits);
-    console.log(habitsDoneToday);
-    console.log(percentageDone);
     return percentageDone;
 }
 
-function habitStats(id, intentions, stacks){
-    let habits = []
-    // if(habits){
-    //     const targetElement = document.getElementById(id);
-    //     const habitsDone = habitsDoneToday(habits);
+function habitStats(id, habits){
+    if(habits){
+        const targetElement = document.getElementById(id);
+        const habitsDone = habitsDoneToday(habits);
 
-    //     const habitStarArray = [];
-    //     for (let index = 0; index < habitsDone; index++) {
-    //         habitStarArray.push("⭐")
-    //     }
+        const habitStarArray = [];
+        for (let index = 0; index < habitsDone; index++) {
+            habitStarArray.push("⭐")
+        }
 
-    //     const stars = habitStarArray.join("");
+        const stars = habitStarArray.join("");
 
-    //     const newSpan = document.createElement("span");
-    //     const chart = document.createTextNode(stars);
-    //     newSpan.appendChild(chart);
-    //     newSpan.id = "star-chart";
+        const newSpan = document.createElement("span");
+        const chart = document.createTextNode(stars);
+        newSpan.appendChild(chart);
+        newSpan.id = "star-chart";
 
-    //     targetElement.replaceWith(newSpan);
+        targetElement.replaceWith(newSpan);
 
-    // }
+    }
 }
 
 function habitList(type, habits, id){
@@ -236,14 +235,12 @@ function habitList(type, habits, id){
 function init(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')
-    habitStats('star-chart' , storedIntentions , storedStacks)
+    habitStats('star-chart' , storedIntentions.concat(storedStacks))
     
-    if(storedIntentions){
-        console.log(storedIntentions)
+    if(storedIntentions.length > 0){
         habitList('intentions', storedIntentions, 'intention-list')
     }
-    if(storedStacks){
-        console.log(storedStacks)
+    if(storedStacks.length > 0){
         habitList('stacks', storedStacks, 'stack-list')
     }
 
