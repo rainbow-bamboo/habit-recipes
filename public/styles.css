@@ -150,6 +150,10 @@ h1{
     letter-spacing: .01em;
 }
 
+.newHabits{
+    display: inline;
+}
+
 .newHabits summary{
     font-size: 2rem;
     margin-bottom: .5em;
@@ -159,7 +163,6 @@ h1{
 .newHabits form{
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin-bottom: 2em;
     padding: 1em;
     border: 3px solid black;
@@ -175,26 +178,26 @@ h1{
     margin-bottom: .5em;
 }
 
-.habit-highlight{
-    color: rgb(255, 66, 59);
-    font-weight: bold;
-}
-
 .newHabits input{
     width: 40vw;
     margin-bottom: .5em;
+}
+
+.habit-highlight{
+    color: #006440;
+    font-weight: bold;
 }
 
 .habit-text-input{
     padding: .5em;
     width: 90vw;
     font-size: 1.25rem;
-    background-color: #F0F0F0;
     color: #333;
     word-break: break-word;
 }
 
 .new-habit-button{
+    width: 5em;
     font-size: 1rem;
     cursor: pointer;
     border: none;
@@ -232,13 +235,23 @@ h1{
     width: 100%;
 }
 
+.habit-lists li:first-child{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.habit-lists li:last-child{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
 .habit-lists li{
     font-size: 1.5rem;
     line-height: 2rem;
     padding: .25em;
     display: flex;
     justify-content: space-between;
-    border-radius: 10px;
 }
 
 .habit-lists span{
@@ -306,7 +319,7 @@ h1{
     .newHabits label{
         font-size: 1.25rem;
         min-width: 3.5em;
-        text-align: center;
+        text-align: left;
     }
 
 
