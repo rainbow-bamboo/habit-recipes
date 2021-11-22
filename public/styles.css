@@ -275,16 +275,19 @@ h1{
     margin-right: 1em;
     background-color: #F0F0F0;
     font-family: sans-serif;
-    box-shadow: 4px 4px #aaa;
     padding: .5em;
-    border: none;
+    border: 3px outset #aaa;
     border-radius: .25em;
     cursor: pointer;
     transition: all .1s;
 }
 
 .counter:active{
-    box-shadow: 1px 1px #aaa;
+    border: 1px outset #aaa;
+}
+
+.the-sun{
+    border: 3px outset #ffe345;
 }
 
 .habit-ui{

@@ -10,13 +10,13 @@ function storeHabit(type, inputID) {
         let stringHabits = JSON.stringify(habits)
         window.localStorage.setItem(type, stringHabits)
         document.getElementById(inputID).value = ""
-        init()
+        render()
     }else{
         window.localStorage.setItem(type, JSON.stringify([{"body": habitBody,
                                                             "id": 1,
                                                             "count": 0}]))
         document.getElementById(inputID).value = ""
-        init()
+        render()
     }
 }
 
@@ -74,7 +74,7 @@ function incrementCounter(type, habitID) {
         return h
     })
     storeToLocalstorage(type, editedHabits)
-    init()
+    render()
 }
 
 function editHabitBody(type, habitID) {
@@ -88,7 +88,7 @@ function editHabitBody(type, habitID) {
             return h
         })
         storeToLocalstorage(type, editedHabits)
-        init()
+        render()
     }
 }
 
@@ -102,7 +102,7 @@ function resetHabitCounter(type, habitID) {
         return h
     })
     storeToLocalstorage(type, editedHabits)
-    init()
+    render()
 }
 
 function deleteHabit(type, habitID) {
@@ -112,7 +112,7 @@ function deleteHabit(type, habitID) {
             return el.id != habitID
         })
         storeToLocalstorage(type, editedHabits)
-        init()
+        render()
     }
 }
 
@@ -196,38 +196,44 @@ function habitList(type, habits, id){
     if(habits){
         let targetElement = document.getElementById(id)
         targetElement.innerHTML = ""
-        habits.forEach(element => {
-            const newLI = document.createElement("li")
-            const newHabit = document.createElement("span")
-            const newContent = document.createTextNode(element.body)
-            const editedToday = isEditedToday(element.lastEdited)
-            newHabit.appendChild(newContent)
-            newLI.appendChild(newHabit)
+        habits.forEach(habit => {
+            const li = document.createElement("li")
+            const span = document.createElement("span")
+            const textNode = document.createTextNode(habit.body)
+            const editedToday = isEditedToday(habit.lastEdited)
+            span.appendChild(textNode)
+            li.appendChild(span)
 
-            const newCounter = document.createElement("button")
-            let countText = element.count.toString()
+            const counterButton = document.createElement("button")
+            let countText = habit.count.toString()
+            let classes = "counter"
             if(editedToday){
-                newCounter.className = "counter edited-today"
+                classes = classes.concat(" edited-today")
                 countText = countText.concat(" ⭐")
-            }else{
-                newCounter.className = "counter"
             }
+
+            if(habit.count >= 19){
+                classes = classes.concat(" the-sun")
+            }
+
+            console.log(classes)
+            counterButton.className = classes
 
             const newCount = document.createTextNode(countText)
-            newCounter.appendChild(newCount)
-            newCounter.onclick = function (){
-                incrementCounter(type, element.id)
+            counterButton.appendChild(newCount)
+            counterButton.onclick = function (){
+                incrementCounter(type, habit.id)
             }
             
-            const newControls = renderControls(type, element.id)
+            const newControls = renderControls(type, habit.id)
                         
             const newUIDIV = document.createElement("div")
             newUIDIV.className = "habit-ui"
-            newUIDIV.appendChild(newCounter)
+            newUIDIV.appendChild(counterButton)
             newUIDIV.appendChild(newControls)
             
-            newLI.appendChild(newUIDIV)
-            targetElement.appendChild(newLI)
+            li.appendChild(newUIDIV)
+            targetElement.appendChild(li)
         })
     }
 }
@@ -238,7 +244,7 @@ function removeElement(id){
     return true
 }
 
-function init(){
+function render(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')
     habitStats('star-chart' , storedIntentions.concat(storedStacks))
@@ -258,4 +264,4 @@ function init(){
 
 }
 
-init()
+render()
