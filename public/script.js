@@ -119,7 +119,7 @@ function deleteHabit(type, habitID) {
 function renderControls(type, id) {
     const newSelect = document.createElement("details")
     newSelect.name = "controls"
-    newSelect.id = "controls"
+    newSelect.className = "controls"
 
     const defaultControl = document.createElement("summary")
     const defaultText = document.createTextNode("⚙️")
