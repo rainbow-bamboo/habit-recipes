@@ -97,7 +97,9 @@ function resetHabitCounter(type, habitID) {
     const editedHabits = stored.map(h => {
         if(h.id == habitID){
             const newVal = prompt("What would you like the counter to be?")
-            h.count = newVal
+            if(newVal){
+                h.count = newVal
+            }
         }
         return h
     })
