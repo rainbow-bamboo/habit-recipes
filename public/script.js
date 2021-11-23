@@ -201,11 +201,14 @@ function habitList(type, habits, id){
             const span = document.createElement("span")
             const textNode = document.createTextNode(habit.body)
             const editedToday = isEditedToday(habit.lastEdited)
+            let countText = "0"
             span.appendChild(textNode)
             li.appendChild(span)
 
             const counterButton = document.createElement("button")
-            let countText = habit.count.toString()
+            if(habit.count > 0){
+                countText = habit.count.toString()
+            }
             let classes = "counter"
             if(editedToday){
                 classes = classes.concat(" edited-today")
