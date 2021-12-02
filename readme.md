@@ -1,5 +1,5 @@
 # Habit Recipes
-This website uses some of the Atomic Habits techniques such as habit stacking to help you develop healthy habits
+This website uses some of the [Atomic Habits](https://jamesclear.com/atomic-habits) techniques such as habit stacking to help you develop healthy habits
 
 ## Instructions
 1. Add the habits that you want to develop
