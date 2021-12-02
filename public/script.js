@@ -176,15 +176,15 @@ function habitStats(id, habits){
     if(habits){
         const targetElement = document.getElementById(id);
         const habitsDone = habitsDoneToday(habits);
-
         const habitStarArray = [];
+
         for (let index = 0; index < habitsDone; index++) {
             habitStarArray.push("⭐")
         }
 
         const stars = habitStarArray.join("");
 
-        const newSpan = document.createElement("span");
+        const newSpan = document.createElement("p");
         const chart = document.createTextNode(stars);
         newSpan.appendChild(chart);
         newSpan.id = "star-chart";
@@ -217,8 +217,8 @@ function habitList(type, habits, id){
                 countText = countText.concat(" ⭐")
             }
 
-            if(habit.count >= 19){
-                classes = classes.concat(" the-sun")
+            if(habit.count >= 100){
+                classes = classes.concat(" learned-habit")
             }
 
             console.log(classes)
