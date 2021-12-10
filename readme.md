@@ -32,7 +32,7 @@ Because reading and writing to localstorage is fast, we're using it as our globa
 1. Read habits from localstorage
 2. Edit the resulting array
 3. Store to localstorage
-4. Call init which will read from localstorage again and rerender
+4. Call render() which will read from localstorage again and rerender
 
 Our rendering function, `habitsToElements` makes me appreaciate JSX. We have to do a `document.createElement -> element.appendChild` pattern, but at least it's vanilla js.
 
