@@ -249,6 +249,18 @@ function removeElement(id){
     return true
 }
 
+
+function showExport(id){
+    const storedIntentions = parseFromLocalstorage('intentions')
+    const storedStacks = parseFromLocalstorage('stacks')
+    const habits = storedIntentions.concat(storedStacks)
+    const exportText = document.createTextNode(JSON.stringify(habits))
+    const targetElement = document.getElementById(id)
+    const exportDiv = document.createElement('div')
+    exportDiv.appendChild(exportText)
+    targetElement.replaceWith(exportDiv)
+}
+
 function render(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')

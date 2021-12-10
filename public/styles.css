@@ -234,7 +234,7 @@ h1{
     background-color: #ffc7cd;
 }
 
-.counter{
+.counter, .footer-controls button{
     font-size: .75em;
     margin-right: 1em;
     background-color: #F0F0F0;
@@ -271,12 +271,22 @@ h1{
     margin-right: 1em;
 }
 
-.controls button{
+.controls button, .footer-controls button{
     border: 2px outset #aaa;
 }
 
-.controls button:active{
+.controls button:active, .footer-controls button{
     border: 2px outset #aaaaaa00;
+}
+
+.footer-controls{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+#exported-habits{
+    margin-left: 2em;
 }
 
 
