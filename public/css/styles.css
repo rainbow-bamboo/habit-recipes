@@ -124,7 +124,7 @@ h1{
     cursor: pointer;
 }
 
-.newHabits form{
+.newHabits form, .theme-list{
     display: flex;
     flex-direction: column;
     margin-bottom: 2em;
@@ -160,7 +160,7 @@ h1{
     word-break: break-word;
 }
 
-.new-habit-button{
+.new-habit-button, .theme button{
     width: 5em;
     font-size: 1rem;
     cursor: pointer;
@@ -172,9 +172,19 @@ h1{
     border: 3px outset #aaa;
 }
 
-.new-habit-button:active{
+.new-habit-button:active, .theme button:active{
     border: 3px outset #aaaaaa00;
 }
+
+.theme-list{
+    display: block;
+}
+
+.theme{
+    display: inline-block;
+    margin-right: 1em;
+}
+
 
 .habits{
     padding: 1em;
