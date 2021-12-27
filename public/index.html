@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habit Recipes</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;1,800&display=swap" rel="stylesheet"> 
 </head>
-<body>
+<body id="app">
     <header>
         <h1>Habit Recipes</h1>
         <a id="rainbow" href="http://rainbowbamboo.org">🌈</a>
@@ -41,6 +42,18 @@
         </form>
         <p>Habits are stored in your browser so you can close the window and re-open later.</p>
     </details>
+
+    <details class="themeSelection">
+        <summary>Color themes</summary>
+        <ul class="theme-list">
+            <li class="theme">
+                <button onclick="storeTheme('light-theme')">Light</button>
+            </li>
+            <li class="theme">
+                <button onclick="storeTheme('dark-theme')">Dark</button>
+            </li>
+        </ul>
+    </details>
     
     <span id="star-chart">  
         📊
@@ -58,9 +71,9 @@
     </div>
     <script src="script.js"></script>
     
-    <div class="footer-controls">
+    <!-- <div class="footer-controls">
         <button onclick="showExport('exported-habits')">Export</button>
         <div id="exported-habits"></div>
-    </div>
+    </div> -->
 </body>
 </html>

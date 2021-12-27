@@ -261,9 +261,26 @@ function showExport(id){
     targetElement.replaceWith(exportDiv)
 }
 
+
+function setTheme(){
+    const storedTheme = parseFromLocalstorage('theme')
+    const app = document.getElementById('app')
+    if(storedTheme != ""){
+        app.className = storedTheme
+    }else{
+        app.className = "default-theme"
+    }
+}
+
+function storeTheme(theme){
+    storeToLocalstorage("theme", theme)
+    render()
+}
+
 function render(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')
+    setTheme()
     habitStats('star-chart' , storedIntentions.concat(storedStacks))
     
     if(storedIntentions.length > 0){

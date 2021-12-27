@@ -90,7 +90,8 @@ table {
 }
 
 body{
-    background-color: #fff8e0;
+    background-color: var(--bg-color);
+    color: var(--color);
     width: 70vw;
     margin: auto;
     font-family: 'Vollkorn';
@@ -104,7 +105,6 @@ h1{
     font-size: 4rem;
     font-family: 'Vollkorn';
     font-weight: 800;
-    font-style: italic;
 }
 
 #star-chart{
@@ -118,7 +118,7 @@ h1{
     display: inline;
 }
 
-.newHabits summary{
+.newHabits summary, .themeSelection summary{
     font-size: 2rem;
     margin-bottom: .5em;
     cursor: pointer;
@@ -129,9 +129,9 @@ h1{
     flex-direction: column;
     margin-bottom: 2em;
     padding: 1em;
-    border: 3px solid black;
+    border: 3px solid var(--color);
     border-radius: 10px;
-    background-color: #ffe4d1;
+    background-color: var(--altBg1)
 }
 
 
@@ -148,7 +148,7 @@ h1{
 }
 
 .habit-highlight{
-    color: #006440;
+    color: var(--highlight);
     font-weight: bold;
 }
 
@@ -184,7 +184,7 @@ h1{
     padding: 1em;
     margin-bottom: 2em;
     display: flex;
-    border: 3px solid black;
+    border: 3px solid var(--color);
     border-radius: 10px;
 }
 
@@ -227,11 +227,11 @@ h1{
 }
 
 .habit-lists li:nth-child(odd){
-    background-color: #ffe4d1;
+    background-color: var(--altBg1);
 }
 
 .habit-lists li:nth-child(even){
-    background-color: #ffc7cd;
+    background-color: var(--altBg2);
 }
 
 .counter, .footer-controls button{
