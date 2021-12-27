@@ -318,8 +318,12 @@ h1{
     }
 
 
-    .newHabits summary{
+    .newHabits summary, .themeSelection summary{
         font-size: 1.5rem;
+    }
+
+    .themeSelection button{
+        margin-bottom: 1em;
     }
 
     .newHabits input{
@@ -328,7 +332,7 @@ h1{
         font-size: 1.25rem;
     }
 
-    .new-habit-button{
+    .new-habit-button .themeSelection button{
         font-size: 1rem;
     }
 
