@@ -108,14 +108,14 @@ h1{
 }
 
 #star-chart{
-    margin-top: 1em;
     font-size: 2rem;
     display: block;
     letter-spacing: .01em;
+    margin-bottom: .5em;
 }
 
 .newHabits{
-    display: inline;
+    margin-bottom: 1em;
 }
 
 .newHabits summary, .themeSelection summary{
@@ -125,7 +125,7 @@ h1{
 }
 
 .newHabits form, .theme-list{
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     margin-bottom: 2em;
     padding: 1em;
@@ -177,7 +177,7 @@ h1{
 }
 
 .theme-list{
-    display: block;
+    display: inline-block;
 }
 
 .theme{
@@ -186,9 +186,6 @@ h1{
 }
 
 
-.habits{
-    padding: 1em;
-}
 
 .habit-lists{
     padding: 1em;
@@ -317,6 +314,9 @@ h1{
         text-align: left;
     }
 
+    .newHabits form{
+        display: flex;
+    }
 
     .newHabits summary, .themeSelection summary{
         font-size: 1.5rem;
@@ -324,6 +324,7 @@ h1{
 
     .themeSelection button{
         margin-bottom: 1em;
+        margin-right: 0em;
     }
 
     .newHabits input{
@@ -340,7 +341,6 @@ h1{
         display: block;
         min-height: 1em;
         word-wrap:break-word;
-        margin-bottom: .5em;
     }
 
     .habits{

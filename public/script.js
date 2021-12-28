@@ -289,13 +289,11 @@ function render(){
         removeElement("intention-section")
     }
 
-
     if(storedStacks.length > 0){
         habitList('stacks', storedStacks, 'stack-list')
     }else{
         removeElement("stack-section")
     }
-
 }
 
 render()
