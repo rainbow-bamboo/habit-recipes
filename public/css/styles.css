@@ -92,7 +92,7 @@ table {
 body{
     background-color: var(--bg-color);
     color: var(--color);
-    width: 70vw;
+    width: 50vw;
     margin: auto;
     font-family: 'Vollkorn';
 }
