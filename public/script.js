@@ -64,12 +64,26 @@ function isEditedToday(lastEdited){
     }
 }
 
+/*  
+This function only returns arrays, it does not do an assignment. 
+This way we can limit mutations to the incrementCounter function.
+*/
+function updatedEditedLog(habit){
+    const habitLog = habit.log
+    if(habitLog){
+        return habitLog.concat(Date())
+    }else{
+        return [Date()]
+    }
+}
+
 function incrementCounter(type, habitID) {
     const stored = parseFromLocalstorage(type)
     const editedHabits = stored.map(h => {
         if(h.id == habitID){
             h.count = parseInt(h.count) + 1
             h.lastEdited = Date()
+            h.log = updatedEditedLog(h)
         }
         return h
     })
