@@ -167,6 +167,7 @@ h1{
     cursor: pointer;
     border: none;
     margin-right: .25em;
+    margin-bottom: 1em;
     padding: .5em;
     background-color: #F0F0F0;
     border-radius: .25em;
@@ -324,7 +325,6 @@ h1{
     }
 
     .themeSelection button{
-        margin-bottom: 1em;
         margin-right: 0em;
     }
 

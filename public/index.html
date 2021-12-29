@@ -16,9 +16,8 @@
         <h1>Habit Recipes</h1>
         <a id="rainbow" href="http://rainbowbamboo.org">🌈</a>
     </header>
-
     <details class="newHabits">
-        <summary>New habit</summary>
+        <summary>Add habit</summary>
         <form action=""
               onsubmit="storeHabit('intentions','intention-input')">
             <label for="habit-intention">I will <span class="habit-highlight">behaviour</span> at <span class="habit-highlight">time</span> in <span class="habit-highlight">location</span></label>
@@ -44,19 +43,24 @@
     </details>
 
     <details class="themeSelection">
-        <summary>Color themes</summary>
+        <summary>Decorate</summary>
         <ul class="theme-list">
             <li class="theme">
-                <button onclick="storeTheme('light-theme')">Light</button>
+                <button onclick="storeTheme('light-theme')"
+                        style="background-color: #FFF7E8;">Light</button>
             </li>
             <li class="theme">
-                <button onclick="storeTheme('dark-theme')">Dark</button>
+                <button onclick="storeTheme('dark-theme')"
+                        style="background-color: #101D40;
+                               color: #FFF7E8">Dark</button>
             </li>
             <li class="theme">
-                <button onclick="storeTheme('forest-theme')">Forest</button>
+                <button onclick="storeTheme('forest-theme')"
+                        style="background-color: #163E24; color: #fffefd;">Forest</button>
             </li>
             <li class="theme">
-                <button onclick="storeTheme('seaside-theme')">Seaside</button>
+                <button onclick="storeTheme('seaside-theme')"
+                        style="background-color: #feffeb;">Seaside</button>
             </li>
         </ul>
     </details>
