@@ -133,17 +133,17 @@ function deleteHabit(type, habitID) {
 }
 
 function renderControls(type, id) {
-    const newSelect = document.createElement("details")
+    const newSelect = document.createElement("select")
     newSelect.name = "controls"
     newSelect.className = "controls"
 
-    const defaultControl = document.createElement("summary")
+    const defaultControl = document.createElement("option")
     const defaultText = document.createTextNode("⚙️")
     defaultControl.appendChild(defaultText)
     defaultControl.value = ""
     newSelect.appendChild(defaultControl)
     
-    const editControl = document.createElement("button")
+    const editControl = document.createElement("option")
     const editText = document.createTextNode("edit habit")
     editControl.appendChild(editText)
     editControl.onclick = function () {
@@ -152,8 +152,8 @@ function renderControls(type, id) {
     }
     newSelect.appendChild(editControl)
 
-    const resetCounterControl = document.createElement("button")
-    const counterText = document.createTextNode("edit counter")
+    const resetCounterControl = document.createElement("option")
+    const counterText = document.createTextNode("reset counter")
     resetCounterControl.appendChild(counterText)
     resetCounterControl.onclick = function () {
         resetHabitCounter(type, id)
@@ -161,8 +161,8 @@ function renderControls(type, id) {
     }
     newSelect.appendChild(resetCounterControl)
 
-    const deleteControl = document.createElement("button")
-    const deleteText = document.createTextNode("delete")
+    const deleteControl = document.createElement("option")
+    const deleteText = document.createTextNode("delete habit")
     deleteControl.appendChild(deleteText)
     deleteControl.onclick = function () {
         deleteHabit(type, id)
