@@ -20,6 +20,7 @@
     --altBg1: #36205a;
     --altBg2: #38524f;
     --highlight: #83f0e8;
+    background-image: url('/public/css/patterns/grid.png');
 }
 
 .forest-theme{

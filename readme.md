@@ -36,6 +36,5 @@ Because reading and writing to localstorage is fast, we're using it as our globa
 
 Our rendering function, `habitsToElements` makes me appreaciate JSX. We have to do a `document.createElement -> element.appendChild` pattern, but at least it's vanilla js.
 
-
-## Future Work
-- Seperate habits into explicit parts
+# Theming
+Theming is done by first storing the selected theme to localstorage. Then, from the render function, we read the stored theme and set a corresponding classname
