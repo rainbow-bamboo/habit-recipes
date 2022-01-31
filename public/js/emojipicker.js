@@ -1,3 +1,7 @@
+function storeToLocalstorage(key,val){
+    window.localStorage.setItem(key, JSON.stringify(val))
+}
+
 const EmojiPicker = function(options) {
 
     this.options = options;
@@ -7838,26 +7842,11 @@ const EmojiPicker = function(options) {
             const myField = document.querySelectorAll(this.insertInto);
             const myValue = emoji;
 
+            functions.closePicker(e)
+            console.log("my value:" + myValue)
+            storeToLocalstorage("emoji", myValue)
+
             // Check if selector is an array
-            myField.forEach(myField => {
-
-                if (document.selection) {
-                    myField.focus();
-                    sel = document.selection.createRange();
-                    sel.text = myValue;
-                } else if (myField.selectionStart || myField.selectionStart == "0") {
-                    const startPos = myField.selectionStart;
-                    const endPos = myField.selectionEnd;
-                    myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
-                    
-                    functions.setCaretPosition(myField, startPos + 2)
-                    
-                } else {
-                    myField.value += myValue;
-                    myField.focus()
-                }
-
-            })
         },
 
 
