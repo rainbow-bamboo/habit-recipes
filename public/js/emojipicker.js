@@ -7839,12 +7839,14 @@ const EmojiPicker = function(options) {
             e.preventDefault();
             
             const emoji = e.target.innerText.trim();
-            const myField = document.querySelectorAll(this.insertInto);
+            const renderTrigger = document.getElementById("heading")
             const myValue = emoji;
 
             functions.closePicker(e)
             console.log("my value:" + myValue)
             storeToLocalstorage("emoji", myValue)
+            renderTrigger.click()
+
 
             // Check if selector is an array
         },

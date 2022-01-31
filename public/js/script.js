@@ -275,6 +275,11 @@ function showExport(id){
     targetElement.replaceWith(exportDiv)
 }
 
+function setEmoji(){
+    const storedEmoji = parseFromLocalstorage('emoji')
+    const emojiButton = document.getElementById('emoji-button')
+    emojiButton.innerHTML = storedEmoji
+}
 
 function setTheme(){
     const storedTheme = parseFromLocalstorage('theme')
@@ -294,7 +299,7 @@ function storeTheme(theme){
 new EmojiPicker({
     trigger: [
         {
-            selector: '.emoji-button',
+            selector: '#emoji-button',
             insertInto: '#emoji-input' 
         }
     ],
@@ -302,10 +307,13 @@ new EmojiPicker({
     specialButtons: 'green' // #008000, rgba(0, 128, 0);
 });
 
+document.getElementById("heading").addEventListener("click", render)
+
 function render(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')
     setTheme()
+    setEmoji()
     habitStats('star-chart' , storedIntentions.concat(storedStacks))
     
     if(storedIntentions.length > 0){
