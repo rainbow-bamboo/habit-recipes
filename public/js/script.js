@@ -291,6 +291,17 @@ function storeTheme(theme){
     render()
 }
 
+new EmojiPicker({
+    trigger: [
+        {
+            selector: '.emoji-button',
+            insertInto: '#emoji-input' 
+        }
+    ],
+    closeButton: true,
+    specialButtons: 'green' // #008000, rgba(0, 128, 0);
+});
+
 function render(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')
