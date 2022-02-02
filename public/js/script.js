@@ -190,10 +190,11 @@ function habitStats(id, habits){
     if(habits){
         const targetElement = document.getElementById(id);
         const habitsDone = habitsDoneToday(habits);
+        const storedEmoji = parseFromLocalstorage('emoji')
         const habitStarArray = [];
 
         for (let index = 0; index < habitsDone; index++) {
-            habitStarArray.push("⭐")
+            habitStarArray.push(storedEmoji)
         }
 
         const stars = habitStarArray.join("");
@@ -211,6 +212,7 @@ function habitStats(id, habits){
 function habitList(type, habits, id){
     if(habits){
         let targetElement = document.getElementById(id)
+        const storedEmoji = parseFromLocalstorage('emoji')
         targetElement.innerHTML = ""
         habits.forEach(habit => {
             const li = document.createElement("li")
@@ -228,7 +230,7 @@ function habitList(type, habits, id){
             let classes = "counter"
             if(editedToday){
                 classes = classes.concat(" edited-today")
-                countText = countText.concat(" ⭐")
+                countText = countText.concat(" " + storedEmoji)
             }
 
             if(habit.count >= 100){
