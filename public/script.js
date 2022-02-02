@@ -132,10 +132,32 @@ function deleteHabit(type, habitID) {
     }
 }
 
+function changeHabit(event, type, id){
+    switch (event.target.value){
+        case 'edit habit':
+            editHabitBody(type, id)
+            event.target.value = ""
+            break
+        case 'reset counter':
+            resetHabitCounter(type, id)
+            event.target.value = ""
+            break
+        case 'delete habit':
+            deleteHabit(type, id)
+            event.target.value = ""
+            break
+        default:
+            console.log("unknown instruction, " + event.target.value)
+    }
+}
+
 function renderControls(type, id) {
     const newSelect = document.createElement("select")
     newSelect.name = "controls"
     newSelect.className = "controls"
+    newSelect.addEventListener('change', (event) => {
+        changeHabit(event, type, id)
+    })
 
     const defaultControl = document.createElement("option")
     const defaultText = document.createTextNode("⚙️")
@@ -146,28 +168,16 @@ function renderControls(type, id) {
     const editControl = document.createElement("option")
     const editText = document.createTextNode("edit habit")
     editControl.appendChild(editText)
-    editControl.onclick = function () {
-        editHabitBody(type, id)
-        newSelect.value = ""
-    }
     newSelect.appendChild(editControl)
 
     const resetCounterControl = document.createElement("option")
     const counterText = document.createTextNode("reset counter")
     resetCounterControl.appendChild(counterText)
-    resetCounterControl.onclick = function () {
-        resetHabitCounter(type, id)
-        newSelect.value = ""
-    }
     newSelect.appendChild(resetCounterControl)
 
     const deleteControl = document.createElement("option")
     const deleteText = document.createTextNode("delete habit")
     deleteControl.appendChild(deleteText)
-    deleteControl.onclick = function () {
-        deleteHabit(type, id)
-        newSelect.value = ""
-    }
     newSelect.appendChild(deleteControl)
 
     return newSelect
@@ -235,7 +245,6 @@ function habitList(type, habits, id){
                 classes = classes.concat(" learned-habit")
             }
 
-            console.log(classes)
             counterButton.className = classes
 
             const newCount = document.createTextNode(countText)
