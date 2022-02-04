@@ -288,7 +288,6 @@ function showExport(id){
 
 function setEmoji(){
     const storedEmoji = parseFromLocalstorage('emoji')
-    console.log(storedEmoji)
     if(storedEmoji.length > 0){
         const emojiButton = document.getElementById('emoji-button')
         emojiButton.innerHTML = storedEmoji
