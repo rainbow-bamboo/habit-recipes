@@ -279,9 +279,45 @@ function showExport(id){
 
 function setEmoji(){
     const storedEmoji = parseFromLocalstorage('emoji')
-    const emojiButton = document.getElementById('emoji-button')
-    emojiButton.innerHTML = storedEmoji
+    console.log(storedEmoji)
+    if(storedEmoji.length > 0){
+        const emojiButton = document.getElementById('emoji-button')
+        emojiButton.innerHTML = storedEmoji
+    }else{
+        const emojiButton = document.getElementById('emoji-button')
+        emojiButton.innerHTML = "⭐"
+        storeToLocalstorage("emoji", "⭐")
+    }
 }
+
+// This is a magic constant, increment it whenever you make a change to the decorations panel and want to show the new badge
+const decorationVersion = 1;
+
+function isDecorationVersionOutdated(){
+    const currentVersion = parseFromLocalstorage("decorationVersion")
+    if(decorationVersion > currentVersion){
+        return true
+    }else{
+        return false
+    }
+}
+
+function updateDecorationVersion(){
+    storeToLocalstorage("decorationVersion", decorationVersion)
+    const newBadge = document.getElementById("newDecorationBadge")
+    newBadge.style.display = "none"
+}
+
+function newDecorationBadge(){
+    if(isDecorationVersionOutdated()){
+        const newBadge = document.getElementById("newDecorationBadge")
+        newBadge.style.display = "inline"
+    }else{
+        return false
+    }
+}
+
+document.getElementById("decorationDetails").addEventListener("toggle", updateDecorationVersion)
 
 function setTheme(){
     const storedTheme = parseFromLocalstorage('theme')
@@ -316,6 +352,7 @@ function render(){
     const storedStacks = parseFromLocalstorage('stacks')
     setTheme()
     setEmoji()
+    newDecorationBadge()
     habitStats('star-chart' , storedIntentions.concat(storedStacks))
     
     if(storedIntentions.length > 0){
