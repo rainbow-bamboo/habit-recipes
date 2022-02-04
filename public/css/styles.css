@@ -119,13 +119,13 @@ h1{
     margin-bottom: 1em;
 }
 
-.newHabits summary, .themeSelection summary{
+.newHabits summary, .decorations summary{
     font-size: 2rem;
     margin-bottom: .5em;
     cursor: pointer;
 }
 
-.newHabits form, .theme-list{
+.newHabits form, .theme-list, .emoji-changer{
     display: inline-flex;
     flex-direction: column;
     margin-bottom: 2em;
@@ -178,14 +178,52 @@ h1{
     border: 3px outset #aaaaaa00;
 }
 
+.decorations sup{
+    vertical-align: super;
+    font-size: 1rem;
+    color: red;
+    display: none;
+}
+
+.decorate-drawers{
+    display: flex;
+    flex-direction: column;
+}
+
 .theme-list{
     display: inline-block;
 }
 
+.theme-list h2, .emoji-changer h2{
+    font-family: 'Vollkorn';
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-right: 1em;
+    margin-bottom: .5em;
+}
+
 .theme{
     display: inline-block;
-    margin-right: 1em;
+    margin-right: 1em;    
 }
+
+.emoji-changer{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1em;
+    flex-wrap: wrap;
+}
+
+.emoji-changer h2{
+    margin-bottom: 0em;
+}
+
+.emoji-changer button{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 
 
 
@@ -324,11 +362,11 @@ h1{
         display: flex;
     }
 
-    .newHabits summary, .themeSelection summary{
+    .newHabits summary, .decorations summary{
         font-size: 1.5rem;
     }
 
-    .themeSelection button{
+    .decorations button{
         margin-right: 0em;
     }
 
@@ -338,7 +376,7 @@ h1{
         font-size: 1.25rem;
     }
 
-    .new-habit-button .themeSelection button{
+    .new-habit-button .decorations button{
         font-size: 1rem;
     }
 

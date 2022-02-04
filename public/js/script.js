@@ -200,10 +200,11 @@ function habitStats(id, habits){
     if(habits){
         const targetElement = document.getElementById(id);
         const habitsDone = habitsDoneToday(habits);
+        const storedEmoji = parseFromLocalstorage('emoji')
         const habitStarArray = [];
 
         for (let index = 0; index < habitsDone; index++) {
-            habitStarArray.push("⭐")
+            habitStarArray.push(storedEmoji)
         }
 
         const stars = habitStarArray.join("");
@@ -221,6 +222,7 @@ function habitStats(id, habits){
 function habitList(type, habits, id){
     if(habits){
         let targetElement = document.getElementById(id)
+        const storedEmoji = parseFromLocalstorage('emoji')
         targetElement.innerHTML = ""
         habits.forEach(habit => {
             const li = document.createElement("li")
@@ -238,7 +240,7 @@ function habitList(type, habits, id){
             let classes = "counter"
             if(editedToday){
                 classes = classes.concat(" edited-today")
-                countText = countText.concat(" ⭐")
+                countText = countText.concat(" " + storedEmoji)
             }
 
             if(habit.count >= 100){
@@ -284,6 +286,47 @@ function showExport(id){
     targetElement.replaceWith(exportDiv)
 }
 
+function setEmoji(){
+    const storedEmoji = parseFromLocalstorage('emoji')
+    console.log(storedEmoji)
+    if(storedEmoji.length > 0){
+        const emojiButton = document.getElementById('emoji-button')
+        emojiButton.innerHTML = storedEmoji
+    }else{
+        const emojiButton = document.getElementById('emoji-button')
+        emojiButton.innerHTML = "⭐"
+        storeToLocalstorage("emoji", "⭐")
+    }
+}
+
+// This is a magic constant, increment it whenever you make a change to the decorations panel and want to show the new badge
+const decorationVersion = 1;
+
+function isDecorationVersionOutdated(){
+    const currentVersion = parseFromLocalstorage("decorationVersion")
+    if(decorationVersion > currentVersion){
+        return true
+    }else{
+        return false
+    }
+}
+
+function updateDecorationVersion(){
+    storeToLocalstorage("decorationVersion", decorationVersion)
+    const newBadge = document.getElementById("newDecorationBadge")
+    newBadge.style.display = "none"
+}
+
+function newDecorationBadge(){
+    if(isDecorationVersionOutdated()){
+        const newBadge = document.getElementById("newDecorationBadge")
+        newBadge.style.display = "inline"
+    }else{
+        return false
+    }
+}
+
+document.getElementById("decorationDetails").addEventListener("toggle", updateDecorationVersion)
 
 function setTheme(){
     const storedTheme = parseFromLocalstorage('theme')
@@ -300,10 +343,25 @@ function storeTheme(theme){
     render()
 }
 
+new EmojiPicker({
+    trigger: [
+        {
+            selector: '#emoji-button',
+            insertInto: '#emoji-input' 
+        }
+    ],
+    closeButton: true,
+    specialButtons: 'green' // #008000, rgba(0, 128, 0);
+});
+
+document.getElementById("heading").addEventListener("click", render)
+
 function render(){
     const storedIntentions = parseFromLocalstorage('intentions')
     const storedStacks = parseFromLocalstorage('stacks')
     setTheme()
+    setEmoji()
+    newDecorationBadge()
     habitStats('star-chart' , storedIntentions.concat(storedStacks))
     
     if(storedIntentions.length > 0){
