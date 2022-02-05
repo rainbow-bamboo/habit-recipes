@@ -221,8 +221,12 @@ function habitStats(id, habits){
         const storedEmoji = parseFromLocalstorage('emoji')
         const habitStarArray = [];
 
-        for (let index = 0; index < habitsDone; index++) {
-            habitStarArray.push(storedEmoji)
+        if (habitsDone > 0){
+            for (let index = 0; index < habitsDone; index++) {
+                habitStarArray.push(storedEmoji)
+            }
+        }else{
+            habitStarArray.push("📊")
         }
 
         const stars = habitStarArray.join("");
