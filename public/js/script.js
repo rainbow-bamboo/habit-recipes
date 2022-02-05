@@ -121,6 +121,24 @@ function resetHabitCounter(type, habitID) {
     render()
 }
 
+function resetHabitCounters(type){
+    const stored = parseFromLocalstorage(type)
+    const resetedHabits = stored.map(h => {
+        h.lastEdited = 0
+        h.count = 0
+        return h
+        })
+    storeToLocalstorage(type, resetedHabits)
+}
+
+function resetAllHabitCounters(){
+    if(window.confirm("Reset all habit counters to 0")){
+        resetHabitCounters("intentions")
+        resetHabitCounters("stacks")
+    }
+    render()
+}
+
 function deleteHabit(type, habitID) {
     if(window.confirm("Delete habit?")){
         const stored = parseFromLocalstorage(type)
@@ -243,7 +261,7 @@ function habitList(type, habits, id){
                 countText = countText.concat(" " + storedEmoji)
             }
 
-            if(habit.count >= 100){
+            if(habit.count >= 19){
                 classes = classes.concat(" learned-habit")
             }
 
