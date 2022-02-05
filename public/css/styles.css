@@ -376,7 +376,7 @@ h1{
         display: flex;
     }
 
-    .newHabits summary, .decorations summary, .fresh-start{
+    .newHabits summary, .decorations summary, .fresh-start, .kofi{
         font-size: 1.5rem;
     }
 
