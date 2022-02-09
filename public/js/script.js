@@ -226,7 +226,7 @@ function habitStats(id, habits){
                 habitStarArray.push(storedEmoji)
             }
         }else{
-            habitStarArray.push("📊")
+            habitStarArray.push("‍‍📈")
         }
 
         const stars = habitStarArray.join("");
