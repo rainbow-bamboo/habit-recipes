@@ -99,6 +99,7 @@ body{
 }
 
 header{
+    margin-top: 1em;
     margin-bottom: 2em;
 }
 
@@ -106,6 +107,14 @@ h1{
     font-size: 4rem;
     font-family: 'Vollkorn';
     font-weight: 800;
+    display: inline;
+}
+
+.totalDone{
+    font-size: 1rem;
+    vertical-align: super;
+    position: relative;
+    bottom: 1.5rem;
 }
 
 #star-chart{
