@@ -110,7 +110,9 @@ h1{
     display: inline;
 }
 
-.totalDone{
+#totalDoneCounter{
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 1rem;
     vertical-align: super;
     position: relative;

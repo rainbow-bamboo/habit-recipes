@@ -78,8 +78,11 @@ function updatedEditedLog(habit){
 }
 
 function incrementCounter(type, habitID) {
-    const stored = parseFromLocalstorage(type)
-    const editedHabits = stored.map(h => {
+    const totalDoneCounter = parseFromLocalstorage("totalDoneCounter")
+    const incrementedCounter = totalDoneCounter + 1
+
+    const storedHabits = parseFromLocalstorage(type)
+    const editedHabits = storedHabits.map(h => {
         if(h.id == habitID){
             h.count = parseInt(h.count) + 1
             h.lastEdited = Date()
@@ -87,7 +90,10 @@ function incrementCounter(type, habitID) {
         }
         return h
     })
+    
+    storeToLocalstorage("totalDoneCounter", incrementedCounter)
     storeToLocalstorage(type, editedHabits)
+
     render()
 }
 
@@ -212,6 +218,33 @@ function percentageDoneToday(habits){
     const countHabitsDoneToday = habitsDoneToday(habits);
     const percentageDone = Math.round(100 * (countHabitsDoneToday / numHabits));
     return percentageDone;
+}
+
+function totalCounter(id){
+    let totalDone = parseFromLocalstorage("totalDoneCounter")
+    if(totalDone.length == 0){
+        totalDone = 0
+    }else{
+        totalDone = parseInt(totalDone)
+    }
+
+    const isMigratedHabits = parseFromLocalstorage("isMigratedHabits")
+    console.log(isMigratedHabits)
+    
+    if(isMigratedHabits != true){
+        console.log("inside isMigrated")
+        const storedIntentions = parseFromLocalstorage('intentions')
+        const storedStacks = parseFromLocalstorage('stacks')
+        const allHabits = storedIntentions.concat(storedStacks)
+        const habitCounters = allHabits.map(e => e.count);
+        const habitsDone = habitCounters.reduce((previousVal, currentVal) => previousVal + currentVal)
+        totalDone = totalDone + habitsDone
+        storeToLocalstorage("isMigratedHabits", true)
+        storeToLocalstorage("totalDoneCounter", totalDone) // note the mutation here
+    }
+
+    const targetElement = document.getElementById(id)
+    targetElement.innerText = totalDone
 }
 
 function habitStats(id, habits){
@@ -383,6 +416,7 @@ function render(){
     setTheme()
     setEmoji()
     newDecorationBadge()
+    totalCounter('totalDoneCounter')
     habitStats('star-chart' , storedIntentions.concat(storedStacks))
     
     if(storedIntentions.length > 0){
