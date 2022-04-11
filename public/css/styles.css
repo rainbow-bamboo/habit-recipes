@@ -332,7 +332,7 @@ h1{
     margin-right: 1em;
 }
 
-.fresh-start{
+.fresh-start, .kofi{
     padding: 0px;
     display: block;
     margin-left: .875em;
@@ -389,7 +389,7 @@ h1{
         display: flex;
     }
 
-    .newHabits summary, .decorations summary, .fresh-start{
+    .newHabits summary, .decorations summary, .fresh-start, .kofi{
         font-size: 1.5rem;
     }
 
