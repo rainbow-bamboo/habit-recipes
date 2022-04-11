@@ -78,9 +78,11 @@ function updatedEditedLog(habit){
 }
 
 function incrementCounter(type, habitID) {
-    const totalDoneCounter = parseFromLocalstorage("totalDoneCounter")
-    const incrementedCounter = totalDoneCounter + 1
-
+    const totalDoneCounter = parseInt(parseFromLocalstorage("totalDoneCounter"))
+    let incrementedCounter = 1
+    if(totalDoneCounter > 0) {
+        incrementedCounter = totalDoneCounter + 1
+        }
     const storedHabits = parseFromLocalstorage(type)
     const editedHabits = storedHabits.map(h => {
         if(h.id == habitID){
@@ -237,7 +239,10 @@ function totalCounter(id){
         const storedStacks = parseFromLocalstorage('stacks')
         const allHabits = storedIntentions.concat(storedStacks)
         const habitCounters = allHabits.map(e => e.count);
-        const habitsDone = habitCounters.reduce((previousVal, currentVal) => previousVal + currentVal)
+        let habitsDone = 0 
+        if(habitCounters.length > 0){
+            habitsDone = habitCounters.reduce((previousVal, currentVal) => previousVal + currentVal)
+        } 
         totalDone = totalDone + habitsDone
         storeToLocalstorage("isMigratedHabits", true)
         storeToLocalstorage("totalDoneCounter", totalDone) // note the mutation here
@@ -325,8 +330,9 @@ function habitList(type, habits, id){
 
 function removeElement(id){
     const element = document.getElementById(id)
-    element.remove()
-    return true
+    if(element != null){
+        element.remove()
+    }    return true
 }
 
 
